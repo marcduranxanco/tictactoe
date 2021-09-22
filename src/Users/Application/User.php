@@ -2,10 +2,11 @@
 
 namespace App;
 
-class User{
+class User (interface repository, role){
 
     protected $name;
     protected $surname;
+    protected $wonGames;
 
     public function __construct($name, $surname)
     {
@@ -31,7 +32,7 @@ class User{
         return $this;
     }
 
-    public function getSurname()
+    public function wonGames()
     {
         return $this->surname;
     }
