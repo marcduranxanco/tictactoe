@@ -1,10 +1,23 @@
 {
-    "require-dev": {
-        "phpunit/phpunit": "^9.5"
+  "name": "tictactoe",
+  "type": "project",
+  "Description" : "Tic Tac Toe API Game",
+  "require-dev": {
+      "phpunit/phpunit": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/",
+      "App\\Games\\": "/app/src/App/Games",
+      "App\\Users\\": "/app/src/App/Users/",
+      "Utils\\": "src/Shared"
     },
-    "autoload": {
-      "psr-4": {
-        "App\\": "src/"
-      }
-    }
+    "classmap": ["src"]
+  },
+  "require": {
+      "symfony/console": "^5.3",
+      "symfony/config": "^5.3",
+      "symfony/yaml": "^5.3",
+      "symfony/dotenv": "^5.3"
+  }
 }
