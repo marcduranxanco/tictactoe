@@ -9,12 +9,12 @@ use iGame;
 
 class Game implements iGame
 {
-    private Array $users;
-    private string $idGame;
-    private string $idWinner;
-    private int $maxUsers;
-    private int $minUsers;
-    private GameRepository $gameRepository;
+    protected Array $users;
+    protected string $idGame;
+    protected string $idWinner;
+    protected int $maxUsers;
+    protected int $minUsers;
+    protected GameRepository $gameRepository;
 
     public function __construct(
         Array $p_users,
