@@ -1,39 +1,25 @@
 <?php
 
-namespace App;
+namespace App\Users;
 
-class User (interface repository, role){
+/**
+ * @params Repository interface
+ */
+class User {
 
-    protected $name;
-    protected $surname;
-    protected $wonGames;
+    protected string $id;
+    protected string $name;
 
-    public function __construct($name, $surname)
+    public function __construct(
+        string $p_id,
+        string $p_name)
     {
-        $this->name = $name;
-        $this->surname = $surname;
+        $this->name = $p_name;
+        $this->id = $p_id;
     }
 
-    public function setName($name)
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    public function getName()
+    public function getName() : string
     {
         return $this->name;
     }
-
-    public function setSurname($surname)
-    {
-        $this->surname = $surname;
-
-        return $this;
-    }
-
-    public function wonGames()
-    {
-        return $this->surname;
-    }
-}
+};
