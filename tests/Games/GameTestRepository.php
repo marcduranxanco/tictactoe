@@ -15,13 +15,8 @@ class GameTestRepository implements GameRepository {
     private bool $isFinished;
 
 
-    public function __construct(string $idGame, array $users, string $idWinner, bool $isFinished)
-    {
-        $this->idGame = $idGame;
-        $this->users = $users;
-        $this->idWinner = $idWinner;
-        $this->isFinished = $isFinished;
-    }
+    public function __construct()
+    {}
 
     public function saveGame(
         string $idGame,
