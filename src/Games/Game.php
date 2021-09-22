@@ -23,7 +23,6 @@ class Game implements iGame
         $this->maxUsers = $p_maxUsers;
         $this->minUsers = $p_minUsers;
         $this->users    = $p_users;
-        $this->winner   = null;
         if(!$this->userValidation())
             throw new Exception("Error Validating the users", 1);
     }
@@ -35,16 +34,17 @@ class Game implements iGame
             $result = false;
 
         foreach ($this->users as $user) {
-            if(get_class($user) !== 'User')
+            if(get_class($user) !== 'App\Users\User')
                 $result = false;
         }
 
         return $result;
     }
 
-    public function setWinner(User $p_user): void
+    public function setWinner(User $p_user): string
     {
         $this->winner = $p_user;
+        return $this->winner->getName();
     }
 
     private function saveGame(): void
