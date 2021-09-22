@@ -9,7 +9,8 @@
     "psr-4": {
       "App\\": "src/",
       "App\\Games\\": "/app/src/App/Games",
-      "App\\Users\\": "/app/src/App/Users/",
+      "Test\\Games\\": "/app/tests/Games",
+      "App\\Users\\": "/app/src/App/Users",
       "Utils\\": "src/Shared"
     },
     "classmap": ["src"]
