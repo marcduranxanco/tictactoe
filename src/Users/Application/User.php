@@ -18,8 +18,8 @@ class User {
         $this->id = $p_id;
     }
 
-    public function getName() : string
+    public function getId() : string
     {
-        return $this->name;
+        return $this->id;
     }
 };
