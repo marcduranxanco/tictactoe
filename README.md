@@ -14,11 +14,9 @@ The project has a mikefile that allows you to perform the basic actions for this
 
 ## Foder estructure
 A structure has been created by trying to apply DDD as follows:
-- Bounded Context: Mission (src/Mission)
- - Modules: Planet and Robot (each module has its own domain and controller):
-- - Planet (src/Mission/Planet)
--  - Robot (src/Mission/Robot)
+- Bounded Context: Game (src/Game)
+ - Modules: Users, Games (each module needs its own domain and controller)
 - Shared: Common classes (src/Shared)
 - App: Main apps (src/app)
-- - robot_mission: main robot mission app
+- - tictactoe: main tictactoe game app
 - Tests: The test folder follows the folder code structure
