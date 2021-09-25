@@ -13,6 +13,7 @@ class GameTestRepository implements GameRepository {
     private array $users;
     private string $idWinner;
     private bool $isFinished;
+    private string $gameStatus;
 
 
     public function __construct()
@@ -22,7 +23,8 @@ class GameTestRepository implements GameRepository {
         string $idGame,
         array $users,
         string $idWinner,
-        bool $isFinished
+        bool $isFinished,
+        string $gameStatus
     ) : bool
     {
         return true;

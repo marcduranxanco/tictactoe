@@ -6,10 +6,12 @@ use App\Users\User;
 use Exception;
 use GameRepository;
 use iGame;
+define("GAME_STATUS_OPTIONS", ["unstarted", "playing", "drawn", "finished"]);
 
 class Game implements iGame
 {
-    protected Array $users;
+    protected string $gameStatus;
+    protected array $users;
     protected string $idGame;
     protected string $idWinner;
     protected int $maxUsers;
@@ -17,7 +19,7 @@ class Game implements iGame
     protected GameRepository $gameRepository;
 
     public function __construct(
-        Array $p_users,
+        array $p_users,
         int $p_maxUsers,
         int $p_minUsers,
         GameRepository $p_gameRepository
@@ -27,6 +29,7 @@ class Game implements iGame
         $this->minUsers         = $p_minUsers;
         $this->users            = $p_users;
         $this->gameRepository   = $p_gameRepository;
+        $this->setNewStatus("unstarted");
 
         if(!$this->userValidation())
             throw new Exception("Error Validating the users", 1);
@@ -48,10 +51,23 @@ class Game implements iGame
 
     public function setWinner(User $p_user): string
     {
-        $this->idWinner = $p_user->getId();
-        return $this->idWinner;
+        return $p_user->getId();
     }
 
+    public function setNewStatus(string $newStatus) : void
+    {
+        if(in_array($newStatus, GAME_STATUS_OPTIONS))
+            $this->gameStatus = $newStatus;
+        else
+            throw new Exception("Error. New game status not valid", 1);
+    }
+
+    protected function isFinished(): bool
+    {
+        return ($this->gameStatus == "finished" || $this->gameStatus == "drawn");
+    }
+
+    // Persistence
     public function saveGame(): bool
     {
         try {
@@ -59,16 +75,13 @@ class Game implements iGame
                 $this->idGame,
                 $this->users,
                 $this->idWinner,
-                $this->isFinished()
+                $this->isFinished(),
+                $this->gameStatus,
             );
             return true;
         } catch (\Throwable $th) {
+            throw new Exception("Error saving the game", 1);
             return false;
         }
-    }
-
-    private function isFinished(): bool
-    {
-        return ($this->winner == null);
     }
 }

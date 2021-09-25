@@ -6,6 +6,7 @@ interface GameRepository
         string $idGame,
         array $users,
         string $idWinner,
-        bool $isFinished
+        bool $isFinished,
+        string $gameStatus
     ) : bool;
 }

@@ -15,7 +15,7 @@ class GameTest extends TestCase
         $this->user1 = new User("1", "User1");
         $this->user2 = new User("2", "User2");
         $users = [$this->user1, $this->user2];
-        $gameRepository = new GameTestRepository("game0", $users, "", false);
+        $gameRepository = new GameTestRepository("game0", $users, "", false, "unstarted");
         $this->game = New Game($users,3,2,$gameRepository);
     }
 
