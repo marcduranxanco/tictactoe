@@ -47,7 +47,7 @@ class TictactoeAppController
             } while (!$movement["success"]);
             $i++;
             $this->output->writeln("<comment>The player " . ($player1 ? "1" : "2") ."  thinking about his move...</comment>");
-            sleep(rand(1,3));
+            sleep(rand(0,2));
             $this->output->writeln("<comment>Movement done!</comment>");
             $this->output->writeln("<info>Current board status:</info>");
             $this->output->writeln($this->drawstate($movement["board"]->getBoard()));
