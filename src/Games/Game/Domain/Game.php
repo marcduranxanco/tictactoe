@@ -16,19 +16,16 @@ class Game implements iGame
     protected string $idWinner;
     protected int $maxUsers;
     protected int $minUsers;
-    protected GameRepository $gameRepository;
 
     public function __construct(
         array $p_users,
         int $p_maxUsers,
-        int $p_minUsers,
-        GameRepository $p_gameRepository
+        int $p_minUsers
     ) {
         $this->idGame           = uniqid();
         $this->maxUsers         = $p_maxUsers;
         $this->minUsers         = $p_minUsers;
         $this->users            = $p_users;
-        $this->gameRepository   = $p_gameRepository;
         $this->setNewStatus("unstarted");
 
         if(!$this->userValidation())
@@ -65,23 +62,5 @@ class Game implements iGame
     protected function isFinished(): bool
     {
         return ($this->gameStatus == "finished" || $this->gameStatus == "drawn");
-    }
-
-    // Persistence
-    public function saveGame(): bool
-    {
-        try {
-            $this->gameRepository->saveGame(
-                $this->idGame,
-                $this->users,
-                $this->idWinner,
-                $this->isFinished(),
-                $this->gameStatus,
-            );
-            return true;
-        } catch (\Throwable $th) {
-            throw new Exception("Error saving the game", 1);
-            return false;
-        }
     }
 }
